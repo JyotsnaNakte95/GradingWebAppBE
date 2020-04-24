@@ -3,6 +3,7 @@ package com.gradingapp.controller;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,8 +51,9 @@ public class HomeworkController {
     @CrossOrigin
 	@PostMapping(value = "/upload")
 	public ResponseEntity<?> upload(MultipartFile inputFile[], MultipartFile outputFile[], Problem problem) {
-    	System.out.println("filessssssssssssss");
-		System.out.println(Arrays.toString(inputFile));
+    	//System.out.println("filessssssssssssss");
+		//System.out.println(Arrays.toString(inputFile));
+    	//HashMap<String, > result = new HashMap();
 		List<String> inputFileNames = new ArrayList<String>();
     	for(MultipartFile file : inputFile) {
 			//ResponseEntity<?> uploaded = 
@@ -66,11 +68,11 @@ public class HomeworkController {
 		}  
     	
 		//System.out.println(problem.getHomeworkName()+   "    " + problem.getProblemName() + "    "+  problem.getProblemDescription());
-		System.out.println("IIIINNNnputFileNames");
-		System.out.println(inputFileNames);
-		System.out.println("OOOOOOUUUTTTputFileNames");
-		System.out.println(outputFileNames);
-		System.out.println(problem.getHomeworkName()+   "    " + problem.getProblemName() + "    "+  problem.getProblemDescription());
+		//System.out.println("IIIINNNnputFileNames");
+		//System.out.println(inputFileNames);
+		//System.out.println("OOOOOOUUUTTTputFileNames");
+		//System.out.println(outputFileNames);
+		//System.out.println(problem.getHomeworkName()+   "    " + problem.getProblemName() + "    "+  problem.getProblemDescription());
 		
 		fileService.handleFileUploads(inputFile, "Professor-Input", problem.getHomeworkName(), problem.getProblemName(), "");
 		fileService.handleFileUploads(outputFile, "Professor-Output", problem.getHomeworkName(), problem.getProblemName(), "");

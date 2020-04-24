@@ -10,6 +10,7 @@ public class Result {
     private String errorOutput;
     private String expectedOutput;
     private Boolean testCasePassed;
+    private long duration;
 
     public Result() {
         this.status = 0;
@@ -17,19 +18,28 @@ public class Result {
         this.expectedOutput = "";
         this.errorOutput = "";
         this.testCasePassed = true;
+        this.duration=0;
     }
-    public Result(int status, String studentOutput, String expectedOutput,String errorOutput, Boolean testCasePassed) {
+    public Result(int status, String studentOutput, String expectedOutput,String errorOutput, Boolean testCasePassed, long duration) {
         this.status = status;
         this.studentOutput = studentOutput;
         this.expectedOutput = expectedOutput;
         this.errorOutput = errorOutput;
         this.testCasePassed = testCasePassed;
+        this.duration =duration;
     }
     public int getStatus() {
         return status;
     }
+ 
     public void setStatus(int status) {
         this.status = status;
+    }
+    public long getDuration() {
+        return duration;
+    }
+    public void setDuration(long duration) {
+        this.duration = duration;
     }
     public String getStudentOutput() {
         return studentOutput;

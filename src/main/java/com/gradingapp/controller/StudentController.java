@@ -54,10 +54,10 @@ public class StudentController {
 		List<Problem> problems= hm.getProblem();
 		List<String> inputFiles=problems.get(0).getInputFiles();
 		List<String> outputFiles=problems.get(0).getOutputFiles();
-		System.out.println("homeworrrrkkkkkkkkkkkkkkkkk ddddddddaaaaaataaaaaaaaa");
-		System.out.println(hm);
-		System.out.println(inputFiles);
-		System.out.println(outputFiles);
+		//System.out.println("homeworrrrkkkkkkkkkkkkkkkkk ddddddddaaaaaataaaaaaaaa");
+		//System.out.println(hm);
+		//System.out.println(inputFiles);
+		//System.out.println(outputFiles);
 		//Object[] row = (Object[]) problems.get(0);
 		//System.out.println(Arrays.toString(row));
 		
@@ -66,8 +66,10 @@ public class StudentController {
 		Result result = new Result();
 		List<Result> resultOfAllTestCases = new ArrayList<Result>();
 		boolean[] testcasespassedinput = new boolean[inputFiles.size()];
+		int noofpassed=0;
 		System.out.println(studentHomework.getUserName()+ studentHomework.getHomeworkName() + studentHomework.getQuestionName() );
 		if(sourceCode != null) {
+			long startTime = System.currentTimeMillis();
 			for(int k=0;k<inputFiles.size();k++) {
 				
 			
@@ -83,10 +85,17 @@ public class StudentController {
 			//System.out.println("RREEEEEEEEEEDSuuuLLLLLLLLLLTTTt");
 			//System.out.println(result.getTestCasePassed());
 			resultOfAllTestCases.add(result);
+			if(result.getTestCasePassed()== true) {
+				noofpassed++;
+			}
 			testcasespassedinput[k]=result.getTestCasePassed();
 		}
+			 long endTime = System.currentTimeMillis();
+		        long duration = (endTime - startTime);
+		        System.out.println("DURATION: NNNN " + duration);
 		}
-		studentService.create(new Student(studentHomework.getUserName(), studentHomework.getHomeworkName(), studentHomework.getQuestionName(), result, studentCodePath, ""));
+	
+		studentService.create(new Student(studentHomework.getUserName(), studentHomework.getHomeworkName(), studentHomework.getQuestionName(), resultOfAllTestCases, studentCodePath, ""));
 		System.out.println(Arrays.toString(testcasespassedinput));
 		System.out.println(resultOfAllTestCases.size());
 		return new ResponseEntity<>(resultOfAllTestCases, HttpStatus.OK);

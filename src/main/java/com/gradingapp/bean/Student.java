@@ -4,6 +4,8 @@ package com.gradingapp.bean;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -14,7 +16,7 @@ public class Student {
 	String userName;
 	String homeworkName;
 	String questionName;
-	Result result;
+	List<Result> result;
 	String lastModifiedDate;
 	double marks = -1.0;
 	String feedback = "";
@@ -23,7 +25,7 @@ public class Student {
 	public Student() {
 	}
 	
-	public Student(String userName, String homeworkName, String questionName, Result result, String codeFileURL, String writeupURL) {
+	public Student(String userName, String homeworkName, String questionName, List<Result> result, String codeFileURL, String writeupURL) {
 		this.userName = userName;
 		this.homeworkName = homeworkName;
 		this.questionName = questionName;
@@ -41,10 +43,10 @@ public class Student {
 	public void set_id(String _id) {
 		this._id = _id;
 	}
-	public Result getResult() {
+	public List<Result> getResult() {
 		return result;
 	}
-	public void setResult(Result result) {
+	public void setResult(List<Result> result) {
 		this.result = result;
 	}
 	public String getLastModifiedDate() {

@@ -1,10 +1,12 @@
 package com.gradingapp.bean;
 
+import java.util.List;
+
 public class GraderData {
 	
 	private String homeworkFileName;
 	private String writeupFileName;
-	private Result result;
+	private List<Result> result;
 	private double marks;
 	private String feedback;
 	
@@ -22,10 +24,10 @@ public class GraderData {
 		this.writeupFileName = writeupFileName;
 	}
 	
-	public Result getResult() {
+	public List<Result> getResult() {
 		return result;
 	}
-	public void setResult(Result result) {
+	public void setResult(List<Result> result) {
 		this.result = result;
 	}
 	public double getMarks() {
